@@ -125,13 +125,13 @@ body {
   }
   
 
-  /* Balloon animation */
+  /* heart animation */
 .heart {
   position: absolute;
   bottom: -150px;
   width: 40px;
   height: 40px;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   transform: rotate(-45deg);
   animation-name: floatUp;
   animation-timing-function: ease-in-out;
@@ -144,7 +144,7 @@ body {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-color: red;
+  background-color: rgb(255, 13, 13);
   border-radius: 50%;
 }
 
