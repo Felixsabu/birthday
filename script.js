@@ -1,34 +1,56 @@
-function throwConfetti() {
+function throwConfetti(event) {
   const confettiBox = document.querySelector('.confetti');
-  confettiBox.innerHTML = '';
-  for(let i=0; i<70; i++) {
-      let conf = document.createElement('div');
-      conf.className = 'piece';
-      conf.style.position = 'absolute';
-      conf.style.left = Math.random() * window.innerWidth + 'px';
-      conf.style.top = Math.random() * window.innerHeight/2 + 'px';
-      conf.style.width = conf.style.height = Math.random()*12+6 + 'px';
-      conf.style.background = ['#fd5c63','#ffd662','#88D9E6','#d03e71','#b565d9','#fcb69f'][Math.floor(Math.random()*6)];
-      conf.style.borderRadius = '50%';
-      conf.style.opacity = Math.random() * 0.5 + 0.5;
-      confettiBox.appendChild(conf);
-      // Animate
-      setTimeout(() => {
-          conf.style.transition = 'all 1.8s cubic-bezier(0,1.07,.67,1)';
-          conf.style.top = (window.innerHeight-40) + 'px';
-          conf.style.transform = 'rotate(' + (Math.random()*360) + 'deg)';
-          conf.style.opacity = 0.15;
-      }, 80);
-      // Remove after animation
-      setTimeout(() => {
-          if(conf.parentNode) conf.parentNode.removeChild(conf);
-      }, 2200);
+  const button = event.target;
+
+  // Get button center position
+  const rect = button.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 80; i++) {
+    let conf = document.createElement('div');
+    conf.className = 'piece';
+    conf.style.position = 'absolute';
+    conf.style.left = originX + 'px';
+    conf.style.top = originY + 'px';
+
+    // Random size
+    const size = Math.random() * 10 + 5;
+    conf.style.width = conf.style.height = size + 'px';
+
+    // Random color
+    conf.style.background = ['#fd5c63', '#ffd662', '#88D9E6', '#d03e71', '#b565d9', '#fcb69f'][Math.floor(Math.random() * 6)];
+    conf.style.borderRadius = '50%';
+    conf.style.opacity = 1;
+
+    document.body.appendChild(conf);
+
+    // Random angle and speed for burst
+    const angle = Math.random() * Math.PI * 2; // 0 to 360 degrees
+    const speed = Math.random() * 6 + 4; // burst speed
+
+    // End position
+    const xMove = Math.cos(angle) * speed * 50;
+    const yMove = Math.sin(angle) * speed * 50;
+
+    setTimeout(() => {
+      conf.style.transition = `transform 1s ease-out, opacity 1s ease-out`;
+      conf.style.transform = `translate(${xMove}px, ${yMove + 100}px) rotate(${Math.random() * 720}deg)`;
+      conf.style.opacity = 0;
+    }, 20);
+
+    // Remove after animation
+    setTimeout(() => {
+      if (conf.parentNode) conf.parentNode.removeChild(conf);
+    }, 1200);
   }
 }
+
+
 // Add random balloons to balloons-container
 function createHearts() {
   const container = document.getElementById('balloons-container');
-  const colors = ['#ff4d6d', '#ff758f', '#ffb3c1']; // shades of pink/red
+  const colors = ['#f6002dff', '#fe002fff', '#f30d37ff']; // shades of pink/red
   for (let i = 0; i < 15; i++) {
     const heart = document.createElement('div');
     heart.className = 'heart';
@@ -60,5 +82,5 @@ function createStars() {
 }
 
 createHearts();
-createStars();
+// createStars();
 
