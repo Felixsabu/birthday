@@ -26,23 +26,21 @@ function throwConfetti() {
   }
 }
 // Add random balloons to balloons-container
-function createBalloons() {
+function createHearts() {
   const container = document.getElementById('balloons-container');
-  const colors = [
-    'rgba(253, 92, 99, 0.8)',
-    'rgba(255, 214, 165, 0.8)',
-    'rgba(136, 217, 230, 0.8)'
-  ];
-  for(let i=0; i<10; i++) {
-    const balloon = document.createElement('div');
-    balloon.className = 'balloon';
-    balloon.style.left = (Math.random() * 100) + 'vw';
-    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    balloon.style.animationDuration = (5 + Math.random() * 7) + 's';
-    balloon.style.animationDelay = (i * 700) + 'ms';
-    container.appendChild(balloon);
+  const colors = ['#ff4d6d', '#ff758f', '#ffb3c1']; // shades of pink/red
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = (Math.random() * 100) + 'vw';
+    heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+    heart.style.animationDelay = (i * 300) + 'ms';
+    container.appendChild(heart);
   }
 }
+
+
 
 // Add random stars for sparkling
 function createStars() {
@@ -61,6 +59,6 @@ function createStars() {
   }
 }
 
-createBalloons();
+createHearts();
 createStars();
 
