@@ -1,0 +1,172 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  background-image: url('bg.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+  
+.container {
+  position: relative;
+  max-width: 500px;
+  margin: 80px auto 0 auto;
+  background: rgba(255, 255, 255, 0.4); /* 70% transparent white */
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 32px;
+  text-align: center;
+  color: #000; /* Text stays opaque and readable */
+}
+  
+  h1, p {
+    margin: 0 0 18px 0;
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+  }
+  
+  h1.fade-in {
+    animation-delay: 0.3s;
+  }
+  p.fade-in.delay {
+    animation-delay: 1s;
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  .cake {
+    position: relative;
+    margin: 24px auto;
+    width: 80px; height: 90px;
+    animation: bounceCake 1.2s infinite alternate;
+  }
+  @keyframes bounceCake {
+    to { transform: translateY(-15px); }
+  }
+  
+  .plate {
+    position: absolute;
+    bottom: 2px;
+    left: -12px;
+    width: 104px;
+    height: 22px;
+    background: #f0ebe0;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 2px 8px #d3c6b5;
+  }
+  .cake-body {
+    position: absolute;
+    bottom: 24px;
+    left: 17px;
+    width: 46px; height: 48px;
+    background: #ffb6b9;
+    border-radius: 10px 10px 14px 14px / 12px 12px 18px 18px;
+    box-shadow: 0 4px 8px #ea5690;
+    z-index: 2;
+  }
+  .candle {
+    position: absolute;
+    bottom: 62px;
+    left: 38px;
+    width: 6px;
+    height: 22px;
+    background: #a3bcd7;
+    border-radius: 3px;
+    z-index: 3;
+  }
+  .flame {
+    position: absolute;
+    bottom: 80px;
+    left: 40px;
+    width: 8px; height: 12px;
+    background: #ffe066;
+    border-radius: 80% 80% 80% 80% / 70% 100% 80% 100%;
+    box-shadow: 0 0 10px 2px #ffe066;
+    animation: flameFlicker 0.6s infinite alternate;
+    z-index: 4;
+  }
+  @keyframes flameFlicker {
+    to {
+      transform: scaleY(1.2) scaleX(0.8) translateY(-3px);
+      background: #ff8c42;
+      box-shadow: 0 0 14px 4px #fdb813;
+    }
+  }
+  
+  button {
+    background: #fd5c63;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0 2px 8px #fd5c63a0;
+    transition: background 0.2s;
+  }
+  
+  button:hover {
+    background: #fc8897;
+  }
+  
+  .confetti {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+
+  /* Balloon animation */
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 40px;
+  height: 60px;
+  background-color: rgba(253, 92, 99, 0.8);
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  animation-name: floatUp;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    bottom: -150px;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(20px) rotate(15deg);
+  }
+  100% {
+    bottom: 110vh;
+    transform: translateX(-20px) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+/* Stars animation for background sparkling */
+.star {
+  position: fixed;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.8;
+  animation-name: twinkle;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes twinkle {
+  0% {opacity: 0.2;}
+  100% {opacity: 1;}
+}
